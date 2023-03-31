@@ -1,12 +1,11 @@
-import useInterval from "../../hooks/useInterval";
-import { useAppDispatch, useAppSelector } from "../../redux/hookts";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   changeCondition,
   reset,
   startProgress,
-} from "../../redux/progress/progressSlice";
-import AppButton from "../app-components/AppButton";
-import Progress from "../app-components/AppProgress";
+} from "@/redux/progress/progressSlice";
+import { AppButton, AppProgress } from "@/components";
+import { useInterval } from "@/hooks";
 
 function Header() {
   const { condition } = useAppSelector((state) => state.progress);
@@ -34,7 +33,7 @@ function Header() {
         title="Code New Project"
         onClick={startNewProject}
       />
-      <Progress />
+      <AppProgress />
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../redux/hookts";
+import { useAppSelector } from "@/redux/hooks";
 
 function Progress() {
   const { value, condition } = useAppSelector((state) => state.progress);
