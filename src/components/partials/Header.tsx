@@ -6,6 +6,9 @@ import {
 } from "@/redux/progress/progressSlice";
 import { AppButton, AppProgress } from "@/components";
 import { useInterval } from "@/hooks";
+import Generate from "project-name-generator"
+import { addProject } from "@/redux/projects/projectsSlice";
+import { generateEarnedMoney } from "@/utils/generateEarnedMoney";
 
 function Header() {
   const { condition } = useAppSelector((state) => state.progress);
@@ -19,6 +22,20 @@ function Header() {
   );
 
   const startNewProject = () => {
+    const newProjectName = Generate({ number: true }).dashed;
+
+    const earnedMoney = generateEarnedMoney({
+      complexity: 5,
+      clicks: 2000,
+      timeTaken: 30,
+    });
+
+    dispatch(addProject({
+      id: crypto.randomUUID(),
+      earnedMoney,
+      name: newProjectName
+    }))
+
     if (condition === "done") {
       dispatch(reset());
       return;

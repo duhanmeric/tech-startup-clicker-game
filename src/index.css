@@ -11,8 +11,11 @@ body,
   height: 100%;
 }
 
-.app-header {
+.container {
   padding: 1rem;
+}
+
+.app-header {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -24,4 +27,21 @@ body,
 
 .btn {
   padding: 0.1rem 0.4rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
