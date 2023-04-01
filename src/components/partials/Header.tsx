@@ -12,6 +12,7 @@ import { generateEarnedMoney } from "@/utils/generateEarnedMoney";
 
 function Header() {
   const { condition } = useAppSelector((state) => state.progress);
+  const { companyName, developerCount } = useAppSelector((state) => state.business);
   const dispatch = useAppDispatch();
 
   useInterval(
@@ -45,12 +46,18 @@ function Header() {
 
   return (
     <header className="app-header">
-      <AppButton
-        isDisabled={condition === "working on it"}
-        title="Code New Project"
-        onClick={startNewProject}
-      />
-      <AppProgress />
+      <div className="company-info">
+        <h4>{companyName}</h4>
+        <h4>Developer Count: {developerCount}</h4>
+      </div>
+      <div className="company-actions">
+        <AppButton
+          isDisabled={condition === "working on it"}
+          title="Code New Project"
+          onClick={startNewProject}
+        />
+        <AppProgress />
+      </div>
     </header>
   );
 }

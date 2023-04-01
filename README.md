@@ -1,7 +1,7 @@
 `Now`
 
-- [ ] make a screen where the player can enter the company name. after the company name is given, the game starts.
-- [ ] add company information to somewhere. this company information is consists of:
+- [x] make a screen where the player can enter the company name. after the company name is given, the game starts.
+- [x] add company information to somewhere. this company information is consists of:
   - company name,
   - total developer count = initally 5
 - [ ] think more about generateEarnedMoney formula.

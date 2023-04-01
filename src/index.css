@@ -15,10 +15,10 @@ body,
   padding: 1rem;
 }
 
-.app-header {
+.company-actions {
+  margin-top: 1rem;
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .progress-label {
