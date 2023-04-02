@@ -4,17 +4,11 @@
 - [x] add company information to somewhere. this company information is consists of:
   - company name,
   - total developer count = initally 5
-- [ ] think more about generateEarnedMoney formula.
-
----
-
-`Later on`
-
-- [ ] configure different type of project earned money. (maybe input boxes for each parameter)
-- [ ] add "hire developer" button somewhere
-- [ ] add "bug alert" for each project. this error alert will run in a probabilistic way
-- [ ] add "debug" button to project table. if there is no bug in the project this button will be disabled
-- [ ] each "bug alert" costs you
-- [ ] every debug will help you recover your lost money
-- [ ] add "update project" button to the table. this update button includes only new features not bug fixes.
-- [ ] add "remove project" button to the table. this remove button stops the money you earn from that project.
+- [x] think more about generateEarnedMoney formula.
+  - now the formula is random.
+- [ ] when the company works on a project, reduce the developer count and change "Total Developers:" to "available developers".
+- [ ] think about dropping the "projects table"
+- [ ] add "hire developer" button. this button hires a developer and cost you.
+- [ ] add game time.
+- [ ] every month your total money decreases for the salaries of the developers
+- [ ] add company expenses like server costs, taxes, etc.

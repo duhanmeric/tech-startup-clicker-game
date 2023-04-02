@@ -9,10 +9,12 @@ import { useInterval } from "@/hooks";
 import Generate from "project-name-generator"
 import { addProject } from "@/redux/projects/projectsSlice";
 import { generateEarnedMoney } from "@/utils/generateEarnedMoney";
+import { earnMoney } from "@/redux/business/businessSlice";
+import { useEffect } from "react";
 
 function Header() {
   const { condition } = useAppSelector((state) => state.progress);
-  const { companyName, developerCount } = useAppSelector((state) => state.business);
+  const { companyName, developerCount, money } = useAppSelector((state) => state.business);
   const dispatch = useAppDispatch();
 
   useInterval(
@@ -23,32 +25,41 @@ function Header() {
   );
 
   const startNewProject = () => {
-    const newProjectName = Generate({ number: true }).dashed;
-
-    const earnedMoney = generateEarnedMoney({
-      complexity: 5,
-      clicks: 2000,
-      timeTaken: 30,
-    });
-
-    dispatch(addProject({
-      id: crypto.randomUUID(),
-      earnedMoney,
-      name: newProjectName
-    }))
-
-    if (condition === "done") {
-      dispatch(reset());
+    if (condition !== "idle") {
       return;
     }
     dispatch(changeCondition("working on it"));
   };
+
+  useEffect(() => {
+    if (condition === "done") {
+      const newProjectName = Generate({ number: true }).dashed;
+
+      const earnedMoney = generateEarnedMoney({
+        complexity: Math.random() * 10,
+        clicks: Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000,
+        timeTaken: Math.random() * 365,
+      });
+
+      dispatch(earnMoney(earnedMoney));
+
+      dispatch(addProject({
+        id: crypto.randomUUID(),
+        earnedMoney,
+        name: newProjectName,
+      }));
+
+      dispatch(reset());
+    }
+  }, [condition, dispatch]);
+
 
   return (
     <header className="app-header">
       <div className="company-info">
         <h4>{companyName}</h4>
         <h4>Developer Count: {developerCount}</h4>
+        <h4>Budget: <span style={{ color: "green" }}>{money} $</span></h4>
       </div>
       <div className="company-actions">
         <AppButton

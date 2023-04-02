@@ -14,7 +14,7 @@ const GameScene = (props: GameSceneProps) => {
         body={projects.map((project, index) => [
           index.toString(),
           project.name,
-          project.earnedMoney.toString()
+          project.earnedMoney + " $"
         ])} />
     </div>
   )
